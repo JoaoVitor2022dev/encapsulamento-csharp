@@ -4,28 +4,18 @@ namespace Primeiro
 {
     class Conta
     {
-        public string _nome;
+        public string Nome { get; set; }
         public int NumeroDaConta { get; private set; }
         public double ValorDaConta { get; private set; }
 
-        public Conta(int numeroDaConta, string nome, double valorDaConta)
+        public Conta(int numeroDaConta, string nome)
         {
-            _nome = nome;
+            Nome = nome;
             NumeroDaConta = numeroDaConta;
-            ValorDaConta = valorDaConta;
         }
-        public Conta(string nome, int numeroDaConta)
+        public Conta(int numeroDaConta, string nome, double depositoInicial): this( numeroDaConta, nome)
         {
-            _nome = nome;
-            NumeroDaConta = numeroDaConta;
-            ValorDaConta = 0.0; 
-        }
-        public string Nome {
-            get { return _nome; }
-            private set { if (value != null && value.Length > 1)
-            {
-                _nome = value;
-            }}
+            DepositoValor(depositoInicial);
         }
         public void DepositoValor(double quantinha)
         {
@@ -39,7 +29,7 @@ namespace Primeiro
         }
         public override string ToString()
         {
-            return "Conta "+ NumeroDaConta + ", Titular: " + _nome + ", Saldo: R$ " + ValorDaConta + " .";
+            return "Conta "+ NumeroDaConta + ", Titular: " + Nome + ", Saldo: R$ " + ValorDaConta + " .";
         }
     }
 }
